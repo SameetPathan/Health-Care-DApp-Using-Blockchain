@@ -15,7 +15,7 @@ function PatientHome() {
 </div>
 
 
-<div class="d-flex justify-content-around mt-4">
+<div class="d-lg-flex justify-content-lg-around">
 
 <div class="card" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/doctor.jpg'} height="180px"  class="card-img-top rounded" alt="..."/>
