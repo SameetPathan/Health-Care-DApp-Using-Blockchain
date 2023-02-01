@@ -24,7 +24,7 @@ function UserTypeComponent() {
                 <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px" class="card-img-top" alt="..."/>
                 <div class="card-body text-center">
                     <h5 class="card-title text-success">Are you a Patient ? </h5>
-                    <a href="/patienthome" class="btn btn-primary">view Details / Verify Entities</a>
+                    <Link to="/patienthome" class="btn btn-primary">view Details / Verify Entities</Link>
                 </div>
             </div>
 
