@@ -39,9 +39,9 @@ function App() {
             <div className='container-fluid mt-4'>
               <Routes> 
                 <Route exact path='/' element={<UserTypeComponent></UserTypeComponent>}></Route>
-                <Route exact path='/PatientHome' element={<PatientHome></PatientHome>}></Route>
+                <Route exact path='/patienthome' element={<PatientHome></PatientHome>}></Route>
 
-                <Route exact path='/DoctorHome' element={<DoctorHome></DoctorHome>}></Route>
+                <Route exact path='/doctorhome' element={<DoctorHome></DoctorHome>}></Route>
                 
                 <Route exact path='/addpatient' element={<AddPatientComponent currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddPatientComponent>}></Route>
                 <Route exact path='/adddoctor' element={<AddDoctor currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddDoctor >}></Route>
