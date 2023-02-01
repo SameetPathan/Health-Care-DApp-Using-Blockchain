@@ -15,16 +15,16 @@ function DoctorHome() {
 </div>
 
 
-<div class="d-lg-flex justify-content-lg-around">
+<div class="d-lg-flex align-items-lg-center">
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px"  class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         <Link to="/addpatient" class="btn btn-success">Add Patient</Link>
     </div>
 </div>
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px" class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         

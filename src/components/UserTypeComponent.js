@@ -10,9 +10,13 @@ function UserTypeComponent() {
   return (
     <>
 
-        <div class="d-lg-flex justify-content-lg-around">
+<div class="alert alert-success text-center" role="alert">
+ Welcome To Jarvis Systems
+</div>
 
-            <div class="card" style={{width: "18rem"}}>
+        <div class="d-lg-flex align-items-lg-center ">
+
+            <div class="card container mb-2 shadow shadow" style={{width: "18rem"}}>
                 <img src={process.env.PUBLIC_URL + '/doctor.jpg'} height="180px"  class="card-img-top" alt="..."/>
                 <div class="card-body text-center">
                     <h5 class="card-title text-success">Are You a Doctor ?</h5>
@@ -20,7 +24,7 @@ function UserTypeComponent() {
                 </div>
             </div>
 
-            <div class="card" style={{width: "18rem"}}>
+            <div class="card container mb-2 shadow" style={{width: "18rem"}}>
                 <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px" class="card-img-top" alt="..."/>
                 <div class="card-body text-center">
                     <h5 class="card-title text-success">Are you a Patient ? </h5>
@@ -28,7 +32,7 @@ function UserTypeComponent() {
                 </div>
             </div>
 
-            <div class="card" style={{width: "18rem"}}>
+            <div class="card container mb-2 shadow" style={{width: "18rem"}}>
                 <img src={process.env.PUBLIC_URL + '/medical.jpg'}  height="180px" class="card-img-top" alt="..."/>
                 <div class="card-body text-center">
                     <h5 class="card-title text-success">Do You Have Medical ?</h5>
@@ -37,7 +41,7 @@ function UserTypeComponent() {
                 </div>
             </div>
 
-            <div class="card" style={{width: "18rem"}}>
+            <div class="card container mb-2 shadow" style={{width: "18rem"}}>
                 <img src={process.env.PUBLIC_URL + '/pharma.jpg'}  height="180px" class="card-img-top" alt="..."/>
                 <div class="card-body text-center">
                     <h5 class="card-title text-success">Are You Pharma Company ?</h5>

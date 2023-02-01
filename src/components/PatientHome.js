@@ -15,16 +15,16 @@ function PatientHome() {
 </div>
 
 
-<div class="d-lg-flex justify-content-lg-around">
+<div class="d-lg-flex align-items-lg-center">
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/doctor.jpg'} height="180px"  class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         <Link to="/viewdoctor" class="btn btn-success">verify Doctor</Link>
     </div>
 </div>
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px" class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         
@@ -32,7 +32,7 @@ function PatientHome() {
     </div>
 </div>
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/medical.jpg'}  height="180px" class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         
@@ -40,7 +40,7 @@ function PatientHome() {
     </div>
 </div>
 
-<div class="card" style={{width: "18rem"}}>
+<div class="card container mb-2 shadow" style={{width: "18rem"}}>
     <img src={process.env.PUBLIC_URL + '/pharma.jpg'}  height="180px" class="card-img-top rounded" alt="..."/>
     <div class="card-body text-center">
         <Link to="/viewpharma" class="btn btn-success">Verify Pharma</Link>
