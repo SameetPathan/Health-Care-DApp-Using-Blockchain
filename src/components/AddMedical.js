@@ -177,9 +177,9 @@ function AddMedicalComponent(props) {
             Profile data
             </div>
           
-        <div className="form-row">
+        <div className="form-row ">
 
-        <div className="col-lg-4 col-md-6 mb-3">
+        <div className="col-lg-4 col-md-6 mb-3 ">
             <label htmlFor="validationCustom01">Medical ID</label>
             <input type="number" className="form-control" id="pid"  required/>
             <div className="valid-feedback">
@@ -267,9 +267,9 @@ function AddMedicalComponent(props) {
      
         
         </form>
-        <button onClick={savedata} className="btn btn-primary">Save</button>
-
-        <button onClick={clear} className="btn btn-danger ml-4">
+        <button onClick={savedata} className="btn btn-primary mb-5">Save</button>
+      
+        <button onClick={clear} className="btn bt1 btn-danger">
         Clear
       </button>
 

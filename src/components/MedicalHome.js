@@ -7,33 +7,23 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 
-const DoctorContractAddress="0x2aFC6129D84306538922469F9cb6F06A4402C16F";
-const abiDoctorContract=[
+const MedicalContractAddress="0x7A112c1ca88fb05e03f1F7007B1afD0d1b0FfC9E";
+const abiMedicalContract=[
 	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "Doctorid",
+				"name": "Medicalid",
 				"type": "address"
 			},
 			{
 				"internalType": "string",
-				"name": "HospitalName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "DoctorName",
+				"name": "MedicalName",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
 				"name": "Address",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Speciality",
 				"type": "string"
 			},
 			{
@@ -47,17 +37,12 @@ const abiDoctorContract=[
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "HospitalID",
-				"type": "string"
-			},
-			{
 				"internalType": "uint256",
 				"name": "status",
 				"type": "uint256"
 			}
 		],
-		"name": "addHospital",
+		"name": "addMedical",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -66,27 +51,12 @@ const abiDoctorContract=[
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "Doctorid",
+				"name": "Medicalid",
 				"type": "address"
 			}
 		],
-		"name": "getHospital",
+		"name": "getMedical",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
 			{
 				"internalType": "string",
 				"name": "",
@@ -120,7 +90,7 @@ const abiDoctorContract=[
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "Doctorid",
+				"name": "Medicalid",
 				"type": "address"
 			}
 		],
@@ -139,7 +109,7 @@ const abiDoctorContract=[
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "Doctorid",
+				"name": "Medicalid",
 				"type": "address"
 			},
 			{
@@ -148,7 +118,7 @@ const abiDoctorContract=[
 				"type": "uint256"
 			}
 		],
-		"name": "updateHospital",
+		"name": "updateMedicall",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -156,9 +126,9 @@ const abiDoctorContract=[
 ];
 
 
-function DoctorHome(props) {
+function MedicalHome(props) {
 
-  const getstatusdoc = async () => {
+  const getstatusMed = async () => {
     const { ethereum } = window;
     const accounts = await ethereum.request({ method: 'eth_accounts' });
     const account = accounts[0];
@@ -168,15 +138,15 @@ function DoctorHome(props) {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const DoctorContract= new ethers.Contract(DoctorContractAddress,abiDoctorContract, signer);
-        let Txn = await DoctorContract.getStatus(account);
+        const MedicalContract= new ethers.Contract(MedicalContractAddress,abiMedicalContract, signer);
+        let Txn = await MedicalContract.getStatus(account);
         let flag=String(Txn);
         
         console.log(String(Txn))
         if(flag==="0"){
-          props.setDocStatus(true);
+          props.setMedStatus(true);
         }else{
-          props.setDocStatus(false);
+         props.setMedStatus(false);
         }
         
       } else {
@@ -188,24 +158,24 @@ function DoctorHome(props) {
   }
 
   useEffect(() => {
-    getstatusdoc();
+    getstatusMed();
   }, [])
 
   return (
     <>
 
 <div className="alert alert-success text-center" role="alert">
-  Doctor Home
+  Medical Home
 </div>
 
-{props.DocStatus?
+{props.MedStatus?
 <div className="d-lg-flex align-items-lg-center">
 
 
       <div className="form-bg">
         <div className="form-container ">
             <img
-            src={process.env.PUBLIC_URL + "/doctor.jpg"}
+            src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
             className="card-img-top shadow rounded mb-2"
             alt="..."
@@ -223,27 +193,7 @@ function DoctorHome(props) {
 
 :
 
-
-
 <div className="d-lg-flex align-items-lg-center">
-
-  <div className="form-bg">
-        <div className="form-container ">
-            <img
-            src={process.env.PUBLIC_URL + "/patient.jpg"}
-            height="180px"
-            className="card-img-top shadow rounded mb-2"
-            alt="..."
-            />
-           
-            <form className="form-horizontal">
-                <Link to="/addpatient" className="btn btn-default">
-                Add Patient
-                </Link>
-
-            </form>
-            </div>
-      </div>
 
       <div className="form-bg">
         <div className="form-container ">
@@ -256,7 +206,7 @@ function DoctorHome(props) {
         
             <form className="form-horizontal">
                 <Link to="/viewpatient" className="btn btn-default">
-                View Patient
+                View Patient Medicine
                 </Link>
 
             </form>
@@ -271,4 +221,4 @@ function DoctorHome(props) {
   )
 }
 
-export default DoctorHome
+export default MedicalHome

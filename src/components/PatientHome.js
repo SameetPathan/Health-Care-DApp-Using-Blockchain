@@ -15,41 +15,84 @@ function PatientHome() {
 </div>
 
 
-<div class="d-lg-flex align-items-lg-center">
 
-<div class="card container mb-2 shadow" style={{width: "18rem"}}>
-    <img src={process.env.PUBLIC_URL + '/doctor.jpg'} height="180px"  class="card-img-top rounded" alt="..."/>
-    <div class="card-body text-center">
-        <Link to="/viewdoctor" class="btn btn-success">verify Doctor</Link>
+<div className='d-lg-flex align-items-lg-center'>
+      
+    <div class="form-bg">
+        <div class="form-container ">
+            <img
+            src={process.env.PUBLIC_URL + "/doctor.jpg"}
+            height="180px"
+            class="card-img-top shadow rounded mb-2"
+            alt="..."
+            />
+          
+            <form class="form-horizontal">
+                <Link to="/viewdoctor" class="btn btn-default">
+                    Verify Doctor
+                </Link>
+
+            </form>
+            </div>
+      </div>
+
+       
+
+    <div class="form-bg">
+        <div class="form-container ">
+            <img
+            src={process.env.PUBLIC_URL + "/patient.jpg"}
+            height="180px"
+            class="card-img-top shadow rounded mb-2"
+            alt="..."
+            />
+           
+                <form class="form-horizontal">
+                <Link to="/viewpatient" class="btn btn-default">
+                        View Patient Details
+                </Link>
+                </form> 
+        </div>
+      </div>
+
+
+    <div class="form-bg">
+        <div class="form-container "> 
+            <img
+            src={process.env.PUBLIC_URL + "/medical.jpg"}
+            height="180px"
+            class="card-img-top shadow rounded mb-2"
+            alt="..."
+                />
+            <form class="form-horizontal">
+            <Link to="/viewmedical" class="btn btn-default">
+                        Veridy Medical
+            </Link>
+
+            </form>
+        </div>
     </div>
-</div>
 
-<div class="card container mb-2 shadow" style={{width: "18rem"}}>
-    <img src={process.env.PUBLIC_URL + '/patient.jpg'} height="180px" class="card-img-top rounded" alt="..."/>
-    <div class="card-body text-center">
-        
-        <Link to="/viewpatient" class="btn btn-success">View Patient</Link>
+    <div class="form-bg">
+        <div class="form-container ">
+              
+            <img
+            src={process.env.PUBLIC_URL + "/pharma.jpg"}
+            height="180px"
+            class="card-img-top shadow rounded mb-2"
+            alt="..."
+            />
+            <form class="form-horizontal">
+            <Link to="/viewPharma" class="btn btn-default">
+                        Verify Medicine
+            </Link>
+
+            </form>
+        </div>
     </div>
-</div>
 
-<div class="card container mb-2 shadow" style={{width: "18rem"}}>
-    <img src={process.env.PUBLIC_URL + '/medical.jpg'}  height="180px" class="card-img-top rounded" alt="..."/>
-    <div class="card-body text-center">
-        
-        <Link to="/viewmedical" class="btn btn-success">Verify Medical</Link>
     </div>
-</div>
 
-<div class="card container mb-2 shadow" style={{width: "18rem"}}>
-    <img src={process.env.PUBLIC_URL + '/pharma.jpg'}  height="180px" class="card-img-top rounded" alt="..."/>
-    <div class="card-body text-center">
-        <Link to="/viewpharma" class="btn btn-success">Verify Pharma</Link>
-    </div>
-</div>
-
-
-
-</div>
 
 
 

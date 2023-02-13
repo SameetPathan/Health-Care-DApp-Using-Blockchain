@@ -192,10 +192,13 @@ function ViewDoctorComponent(props) {
             </div>
 
         </form>
-        <button onClick={search} className="btn btn-primary">Search</button>
-		<button onClick={clear} className="btn btn-danger ml-4">
+		
+        <button onClick={search} className="btn btn-primary mb-2">Search</button>
+		<button onClick={clear} className="btn btn-danger bt1">
+		
         Clear
       </button>
+	  
         
         
 

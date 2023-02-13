@@ -329,8 +329,8 @@ function AddDoctor(props) {
   </div>
         
         </form>
-        <button onClick={savedata} className="btn btn-primary">Save</button>
-        <button onClick={clear} className="btn btn-danger ml-4">
+        <button onClick={savedata} className="btn btn-primary mb-5">Save</button>
+        <button onClick={clear} className="btn bt1 btn-danger">
         Clear
       </button>
     </div>

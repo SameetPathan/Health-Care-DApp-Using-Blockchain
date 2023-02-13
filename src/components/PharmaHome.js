@@ -7,23 +7,41 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 
-const DoctorContractAddress="0x2aFC6129D84306538922469F9cb6F06A4402C16F";
-const abiDoctorContract=[
+const PharmaContractAddress="0x22b8424720F0EE1A55dEB24176Da80640138064d";
+const abiPharmaContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "Doctorid",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
+			}
+		],
+		"name": "UpdateMedicine",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
 			},
 			{
 				"internalType": "string",
-				"name": "HospitalName",
+				"name": "CompanyID",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "DoctorName",
+				"name": "CompanyName",
 				"type": "string"
 			},
 			{
@@ -33,22 +51,22 @@ const abiDoctorContract=[
 			},
 			{
 				"internalType": "string",
-				"name": "Speciality",
+				"name": "ExpireDate",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "PhoneNumber",
+				"name": "ManufactureDate",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "CertificateNumber",
+				"name": "Contents",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "HospitalID",
+				"name": "ApprovalFrom",
 				"type": "string"
 			},
 			{
@@ -57,7 +75,7 @@ const abiDoctorContract=[
 				"type": "uint256"
 			}
 		],
-		"name": "addHospital",
+		"name": "addMedicine",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -65,12 +83,12 @@ const abiDoctorContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "Doctorid",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
 			}
 		],
-		"name": "getHospital",
+		"name": "getMedicine",
 		"outputs": [
 			{
 				"internalType": "string",
@@ -119,9 +137,9 @@ const abiDoctorContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "Doctorid",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
 			}
 		],
 		"name": "getStatus",
@@ -134,31 +152,13 @@ const abiDoctorContract=[
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "Doctorid",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "status",
-				"type": "uint256"
-			}
-		],
-		"name": "updateHospital",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	}
 ];
 
 
-function DoctorHome(props) {
+function PharmaHome() {
 
-  const getstatusdoc = async () => {
+  const getstatusMed = async () => {
     const { ethereum } = window;
     const accounts = await ethereum.request({ method: 'eth_accounts' });
     const account = accounts[0];
@@ -168,16 +168,12 @@ function DoctorHome(props) {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const DoctorContract= new ethers.Contract(DoctorContractAddress,abiDoctorContract, signer);
-        let Txn = await DoctorContract.getStatus(account);
+        const PharmaContract= new ethers.Contract(PharmaContractAddress,abiPharmaContract, signer);
+        let medid=101;
+        let Txn = await PharmaContract.getStatus(medid);
         let flag=String(Txn);
-        
         console.log(String(Txn))
-        if(flag==="0"){
-          props.setDocStatus(true);
-        }else{
-          props.setDocStatus(false);
-        }
+       
         
       } else {
         console.log("Ethereum object does not exist");
@@ -187,58 +183,27 @@ function DoctorHome(props) {
     }
   }
 
-  useEffect(() => {
-    getstatusdoc();
-  }, [])
-
   return (
     <>
 
 <div className="alert alert-success text-center" role="alert">
-  Doctor Home
+  Pharma Home
 </div>
 
-{props.DocStatus?
 <div className="d-lg-flex align-items-lg-center">
-
 
       <div className="form-bg">
         <div className="form-container ">
             <img
-            src={process.env.PUBLIC_URL + "/doctor.jpg"}
+            src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
             className="card-img-top shadow rounded mb-2"
             alt="..."
             />
         
             <form className="form-horizontal">
-                <Link to="/adddoctor" className="btn btn-default">
-                Add Yourself and get Verified
-                </Link>
-
-            </form>
-            </div>
-      </div>
-</div>
-
-:
-
-
-
-<div className="d-lg-flex align-items-lg-center">
-
-  <div className="form-bg">
-        <div className="form-container ">
-            <img
-            src={process.env.PUBLIC_URL + "/patient.jpg"}
-            height="180px"
-            className="card-img-top shadow rounded mb-2"
-            alt="..."
-            />
-           
-            <form className="form-horizontal">
-                <Link to="/addpatient" className="btn btn-default">
-                Add Patient
+                <Link to="/addpharma" className="btn btn-default">
+                Add Medicine and get Verified
                 </Link>
 
             </form>
@@ -248,7 +213,7 @@ function DoctorHome(props) {
       <div className="form-bg">
         <div className="form-container ">
             <img
-            src={process.env.PUBLIC_URL + "/patient.jpg"}
+            src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
             className="card-img-top shadow rounded mb-2"
             alt="..."
@@ -256,19 +221,24 @@ function DoctorHome(props) {
         
             <form className="form-horizontal">
                 <Link to="/viewpatient" className="btn btn-default">
-                View Patient
+                View Verification Medicine Status
                 </Link>
 
             </form>
             </div>
       </div>
+
+
 </div>
 
-}
+
+
+
+
 
 
     </>
   )
 }
 
-export default DoctorHome
+export default PharmaHome

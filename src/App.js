@@ -21,6 +21,8 @@ import ViewMedicalComponent from './components/ViewMedicineComponent';
 import UserTypeComponent from './components/UserTypeComponent';
 import PatientHome from './components/PatientHome';
 import DoctorHome from './components/DoctorHome';
+import MedicalHome from './components/MedicalHome';
+import PharmaHome from './components/PharmaHome';
 
  
 function App() {
@@ -28,6 +30,9 @@ function App() {
   const [currentAccount, setCurrentAccount] = useState(null);
 
   const [currentBalance, setCurrentBalanace] = useState(null);
+
+  const [DocStatus, setDocStatus] = useState(true);
+  const [MedStatus, setMedStatus] = useState(true);
 
   return <>
 
@@ -41,13 +46,15 @@ function App() {
                 <Route exact path='/' element={<UserTypeComponent></UserTypeComponent>}></Route>
                 <Route exact path='/patienthome' element={<PatientHome></PatientHome>}></Route>
 
-                <Route exact path='/doctorhome' element={<DoctorHome></DoctorHome>}></Route>
-                
+                <Route exact path='/doctorhome' element={<DoctorHome  DocStatus={DocStatus} setDocStatus={setDocStatus} ></DoctorHome>}></Route>
+                <Route exact path='/medicalhome' element={<MedicalHome  MedStatus={MedStatus} setMedStatus={setMedStatus} ></MedicalHome>}></Route>
+                <Route exact path='/pharmahome' element={<PharmaHome></PharmaHome>}></Route>
+
                 <Route exact path='/addpatient' element={<AddPatientComponent currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddPatientComponent>}></Route>
                 <Route exact path='/adddoctor' element={<AddDoctor currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddDoctor >}></Route>
                 <Route exact path='/addmedical' element={<AddMedicalComponent currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddMedicalComponent>}></Route>
                 <Route exact path='/addpharma' element={<AddPharma currentAccount={currentAccount} currentBalance={currentBalance} setCurrentBalanace={setCurrentBalanace}></AddPharma>}></Route>
-
+              
                 <Route exact path='/viewpatient' element={<ViewPatientComponent></ViewPatientComponent>}></Route>
                 <Route exact path='/viewPharma' element={<ViewPharmaComponent></ViewPharmaComponent>}></Route>
                 <Route exact path='/viewdoctor' element={<ViewDoctorComponent></ViewDoctorComponent>}></Route>
