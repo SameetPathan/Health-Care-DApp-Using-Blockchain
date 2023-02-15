@@ -7,7 +7,7 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 
-const PharmaContractAddress="0x22b8424720F0EE1A55dEB24176Da80640138064d";
+const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
 const abiPharmaContract=[
 	{
 		"inputs": [
@@ -35,9 +35,9 @@ const abiPharmaContract=[
 				"type": "uint256"
 			},
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "CompanyID",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -81,6 +81,66 @@ const abiPharmaContract=[
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "getAllPharma",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "MedicineBatchId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "CompanyID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "CompanyName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ExpireDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ManufactureDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Contents",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ApprovalFrom",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct PharmaContract.PharmaData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "uint256",
@@ -91,9 +151,9 @@ const abiPharmaContract=[
 		"name": "getMedicine",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -125,6 +185,19 @@ const abiPharmaContract=[
 				"name": "",
 				"type": "string"
 			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
@@ -183,6 +256,7 @@ function PharmaHome() {
     }
   }
 
+
   return (
     <>
 
@@ -220,7 +294,7 @@ function PharmaHome() {
             />
         
             <form className="form-horizontal">
-                <Link to="/viewpatient" className="btn btn-default">
+                <Link to="/viewPharma" className="btn btn-default">
                 View Verification Medicine Status
                 </Link>
 

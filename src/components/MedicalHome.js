@@ -7,7 +7,7 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 
-const MedicalContractAddress="0x7A112c1ca88fb05e03f1F7007B1afD0d1b0FfC9E";
+const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
 const abiMedicalContract=[
 	{
 		"inputs": [
@@ -48,6 +48,51 @@ const abiMedicalContract=[
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "getAllMedical",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "Medicalid",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "MedicalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "CertificateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct MedicalContract.MedicalData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -77,6 +122,19 @@ const abiMedicalContract=[
 				"name": "",
 				"type": "string"
 			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
@@ -182,7 +240,7 @@ function MedicalHome(props) {
             />
         
             <form className="form-horizontal">
-                <Link to="/adddoctor" className="btn btn-default">
+                <Link to="/addmedical" className="btn btn-default">
                 Add Yourself and get Verified
                 </Link>
 
@@ -205,7 +263,7 @@ function MedicalHome(props) {
             />
         
             <form className="form-horizontal">
-                <Link to="/viewpatient" className="btn btn-default">
+                <Link to="/viewonlypatient" className="btn btn-default">
                 View Patient Medicine
                 </Link>
 

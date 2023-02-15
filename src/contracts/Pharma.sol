@@ -7,7 +7,7 @@ contract PharmaContract{
 struct PharmaData{
     
 		uint256 MedicineBatchId;
-        string CompanyID;
+        address CompanyID;
         string CompanyName;
         string Address;
         string ExpireDate;
@@ -18,13 +18,15 @@ struct PharmaData{
 }
 
 
+address myAddress = address(0x0);
+
 PharmaData []Pharma;
 
 
 function addMedicine(
 
         uint256 MedicineBatchId,
-        string memory  CompanyID,
+        address CompanyID,
         string memory  CompanyName,
         string memory  Address,
         string memory  ExpireDate,
@@ -73,7 +75,7 @@ PharmaData memory e =Pharma[i];
 function getMedicine(
 	uint256 MedicineBatchId
 ) public view returns(
-	string memory,
+	address,
 	string memory,
 	string memory,
 	string memory,
@@ -101,7 +103,7 @@ function getMedicine(
 		}
 	}
 
-	return( "Not Found",
+	return( myAddress,
 			"Not Found",
 			"Not Found",
 			"Not Found",
@@ -125,5 +127,13 @@ function getMedicine(
 	}
 	return(0);
     }
+
+	function getAllPharma() public view returns (PharmaData[] memory) {
+    return Pharma;
+	}
+
+	function getNumberOfRecords() public view returns (uint) {
+    return Pharma.length;
+}
 
 }

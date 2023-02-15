@@ -66,7 +66,7 @@ function PatientHome() {
                 />
             <form class="form-horizontal">
             <Link to="/viewmedical" class="btn btn-default">
-                        Veridy Medical
+                        Verify Medical
             </Link>
 
             </form>

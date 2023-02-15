@@ -1,16 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
+import { useState } from 'react';
 
-
-const DoctorContractAddress="0x569c1c7A1cd4CaE985C7F5149C1E99d8cE8a72AB";
+const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "Doctorid",
-				"type": "uint256"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -46,22 +46,87 @@ const abiDoctorContract=[
 				"internalType": "string",
 				"name": "HospitalID",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
 			}
 		],
-		"name": "addHospital",
+		"name": "addDoctor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "getAllDoctor",
+		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "Doctorid",
-				"type": "uint256"
+				"components": [
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DoctorName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Speciality",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "CertificateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DoctorContract.DoctorData[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
-		"name": "getHospital",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			}
+		],
+		"name": "getDoctor",
 		"outputs": [
 			{
 				"internalType": "string",
@@ -97,23 +162,90 @@ const abiDoctorContract=[
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			}
+		],
+		"name": "getStatus",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
+			}
+		],
+		"name": "updateDoctor",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	}
 ];
 
-
 function AddDoctor(props) {
 
-  
+  const [account, setAccount] = useState(null);
+
+  const setacc=async()=>{
+
+    const { ethereum } = window;
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    setAccount(accounts[0]);
+    //account = accounts[0];
+ 
+  }
+     
 
   const clear=()=>{
     document.getElementById("myForm").reset();
 }
 
     const savedata = async () => {
+
+      
+
         try {
           const { ethereum } = window;
     
@@ -153,7 +285,7 @@ function AddDoctor(props) {
        
             //console.log(Fullname)
             //console.log(idu)
-            let Txn2 = await DoctorContract.addHospital(Doctorid,HospitalName,DoctorName,Address,Speciality,PhoneNumber,CertificateNumber,HospitalId);
+            let Txn2 = await DoctorContract.addDoctor(Doctorid,HospitalName,DoctorName,Address,Speciality,PhoneNumber,CertificateNumber,HospitalId,0);
     
             
             console.log("Mining... please wait");
@@ -197,7 +329,10 @@ function AddDoctor(props) {
       }
 
 
-
+      useEffect(() => {
+        setacc();
+      });
+  
 
   return (
     <>
@@ -217,7 +352,7 @@ function AddDoctor(props) {
 
         <div className="col-lg-4 col-md-6 mb-3">
             <label htmlFor="validationCustom01">Doctor ID</label>
-            <input type="number" className="form-control" id="docid"  required/>
+            <input type="text" className="form-control" value={account} id="docid" disabled  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
@@ -226,7 +361,7 @@ function AddDoctor(props) {
            
             <div className=" col-lg-2 col-md-6 mb-3">
             <label htmlFor="validationCustom01">Doctor name</label>
-            <input type="text" className="form-control" id="dname"  required/>
+            <input type="text" className="form-control"  id="dname"  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
@@ -329,7 +464,7 @@ function AddDoctor(props) {
   </div>
         
         </form>
-        <button onClick={savedata} className="btn btn-primary mb-5">Save</button>
+        <button onClick={savedata} className="btn bt2 btn-success mb-5">Save</button>
         <button onClick={clear} className="btn bt1 btn-danger">
         Clear
       </button>

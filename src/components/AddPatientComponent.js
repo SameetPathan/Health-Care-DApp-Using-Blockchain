@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
+import { useState } from 'react';
 
 
-const PatientContractAddress="0x9b24F69e9D6683F02659ce6906C463f8b01FAAD6";
+const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
 const abiPatientContract=[
 	{
 		"inputs": [
@@ -58,9 +59,9 @@ const abiPatientContract=[
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "DoctorHospName",
-				"type": "string"
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
 			}
 		],
 		"name": "addPatient",
@@ -70,7 +71,90 @@ const abiPatientContract=[
 	},
 	{
 		"inputs": [],
+		"name": "getAllPatient",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "patientid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "FullName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Gender",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DateOfBirth",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Diagnoses",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Medicines",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Health_Survey_Lab_Test",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "AnyPastHistroy",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
+					}
+				],
+				"internalType": "struct PatientContract.PatientData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -137,9 +221,9 @@ const abiPatientContract=[
 				"type": "string"
 			},
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "",
-				"type": "string"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -149,6 +233,19 @@ const abiPatientContract=[
 
 
 function AddPatientComponent(props) {
+
+  const [account, setAccount] = useState(null);
+
+  const setacc=async()=>{
+
+    const { ethereum } = window;
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    setAccount(accounts[0]);
+    //console.log(account)
+    //account = accounts[0];
+ 
+  }
+
 
   
     const clear=()=>{
@@ -245,6 +342,11 @@ function AddPatientComponent(props) {
         }
       }
 
+      useEffect(() => {
+        setacc();
+      });
+  
+
  
 
   return (
@@ -288,9 +390,9 @@ function AddPatientComponent(props) {
           <div className="col-md-3 mb-3">
             <label htmlFor="validationCustom04">Gender</label>
             <select className="custom-select" id="gender" required>
-              <option>Female</option>
-              <option>Male</option>
-              <option>Cant say</option>
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Cant Say">Cant say</option>
             </select>
             <div className="invalid-feedback">Please select a valid Gender</div>
           </div>
@@ -361,8 +463,10 @@ function AddPatientComponent(props) {
         <div className="form-group col-lg-4">
           <label htmlFor="validationCustom02">Doctor ID</label>
           <input
-            type="number"
+            type="text"
             className="form-control"
+            value={account}
+            disabled
             id="doctorHospital"
             required
           />
@@ -405,7 +509,7 @@ function AddPatientComponent(props) {
           ></textarea>
         </div>
       </form>
-      <button onClick={savedata} className="btn btn-success mb-5">
+      <button onClick={savedata} className="btn bt2 btn-success mb-5">
         Save
       </button>
 

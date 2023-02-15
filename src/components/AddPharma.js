@@ -1,10 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
+import { useState } from 'react';
 import { clear } from '@testing-library/user-event/dist/clear';
 
 
-const PharmaContractAddress="0xaB9BDe2feBe5f4aA9bb0D76b39F5Adc729e94DDf";
+const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
 const abiPharmaContract=[
 	{
 		"inputs": [
@@ -14,9 +15,27 @@ const abiPharmaContract=[
 				"type": "uint256"
 			},
 			{
-				"internalType": "string",
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
+			}
+		],
+		"name": "UpdateMedicine",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
 				"name": "CompanyID",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -47,11 +66,76 @@ const abiPharmaContract=[
 				"internalType": "string",
 				"name": "ApprovalFrom",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
 			}
 		],
 		"name": "addMedicine",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllPharma",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "MedicineBatchId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "CompanyID",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "CompanyName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ExpireDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ManufactureDate",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Contents",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "ApprovalFrom",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct PharmaContract.PharmaData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -65,9 +149,9 @@ const abiPharmaContract=[
 		"name": "getMedicine",
 		"outputs": [
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "",
-				"type": "string"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -98,6 +182,43 @@ const abiPharmaContract=[
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "MedicineBatchId",
+				"type": "uint256"
+			}
+		],
+		"name": "getStatus",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -106,6 +227,17 @@ const abiPharmaContract=[
 ];
 
 function AddPharma(props) {
+
+  const [account, setAccount] = useState(null);
+
+  const setacc=async()=>{
+
+    const { ethereum } = window;
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    setAccount(accounts[0]);
+    //account = accounts[0];
+ 
+  }
 
    
 
@@ -153,7 +285,7 @@ function AddPharma(props) {
             const Address=Address1+" "+Address2+" "+City+" "+State+" "+Zipcode; 
        
           
-            let Txn2 = await PharmaContract.addMedicine(MedicineBatchId,CompanyId,CompanyName,Address,Expire,Manufacture,Contents,ApprovalForm);
+            let Txn2 = await PharmaContract.addMedicine(MedicineBatchId,CompanyId,CompanyName,Address,Expire,Manufacture,Contents,ApprovalForm,0);
     
             
             console.log("Mining... please wait");
@@ -197,7 +329,10 @@ function AddPharma(props) {
         }
       }
 
-
+      useEffect(() => {
+        setacc();
+      });
+  
 
 
 
@@ -227,7 +362,7 @@ function AddPharma(props) {
 
             <div className="col-lg-3 col-md-6 mb-3">
             <label htmlFor="validationCustom01">Company ID</label>
-            <input type="number" className="form-control" id="cid"  required/>
+            <input type="text" value={account} disabled className="form-control" id="cid"  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
@@ -323,11 +458,11 @@ function AddPharma(props) {
 
         <div className="form-group">
     <label htmlFor="exampleFormControlTextarea1">Approval From</label>
-    <textarea className="form-control" id="approvalfrom" rows="3"></textarea>
+    <textarea className="form-control" id="approvalform" rows="3"></textarea>
   </div>
 
         </form>
-        <button onClick={savedata} className="btn btn-primary mb-5">Save</button>
+        <button onClick={savedata} className="btn bt2 btn-success mb-5">Save</button>
 
         <button onClick={clear} className="btn bt1 btn-danger">
         Clear

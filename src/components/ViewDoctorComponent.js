@@ -1,14 +1,14 @@
 import React from 'react'
 import { ethers } from 'ethers';
 
-const DoctorContractAddress="0x569c1c7A1cd4CaE985C7F5149C1E99d8cE8a72AB";
+const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "Doctorid",
-				"type": "uint256"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -44,22 +44,87 @@ const abiDoctorContract=[
 				"internalType": "string",
 				"name": "HospitalID",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
 			}
 		],
-		"name": "addHospital",
+		"name": "addDoctor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
-		"inputs": [
+		"inputs": [],
+		"name": "getAllDoctor",
+		"outputs": [
 			{
-				"internalType": "uint256",
-				"name": "Doctorid",
-				"type": "uint256"
+				"components": [
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DoctorName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Speciality",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "CertificateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DoctorContract.DoctorData[]",
+				"name": "",
+				"type": "tuple[]"
 			}
 		],
-		"name": "getHospital",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			}
+		],
+		"name": "getDoctor",
 		"outputs": [
 			{
 				"internalType": "string",
@@ -95,9 +160,64 @@ const abiDoctorContract=[
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			}
+		],
+		"name": "getStatus",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
+			}
+		],
+		"name": "updateDoctor",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];
@@ -120,14 +240,15 @@ function ViewDoctorComponent(props) {
             const DoctorContract= new ethers.Contract(DoctorContractAddress, abiDoctorContract, signer);
             //datacapture
             const doctorid=document.getElementById("doctorid").value;
+		
         
             //start 
     
             console.log("Initialize");
 
            
-            const Txn2 = await DoctorContract.getPatient(doctorid);
-            console.log(Txn2[0]);
+            const Txn2 = await DoctorContract.getDoctor(doctorid);
+            console.log(Txn2);
 
             document.getElementById("hname").innerHTML=Txn2[0];
             document.getElementById("dname").innerHTML=Txn2[1];
@@ -136,6 +257,15 @@ function ViewDoctorComponent(props) {
             document.getElementById("phonenumber").innerHTML=Txn2[4];
             document.getElementById("lno").innerHTML=Txn2[5];
             document.getElementById("hid").innerHTML=Txn2[6];
+			if(Txn2[7]=="1"){
+				document.getElementById("status").innerHTML="Verified";
+				document.getElementById("status").style.backgroundColor="green";
+			}
+			else{
+				document.getElementById("status").innerHTML="Not Verified";
+				document.getElementById("status").style.backgroundColor="red";
+			}
+			
            
     
             console.log("Mining... please wait");
@@ -185,20 +315,20 @@ function ViewDoctorComponent(props) {
             </div>
             <div className="col-md-6 mb-3">
             <label htmlFor="validationCustom01">Doctor ID</label>
-            <input type="number" className="form-control" id="doctorid"  required/>
+            <input type="text" className="form-control" id="doctorid"  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
             </div>
 
         </form>
-		
-        <button onClick={search} className="btn btn-primary mb-2">Search</button>
-		<button onClick={clear} className="btn btn-danger bt1">
+		<div className='container'>
+        <button onClick={search} className="btn btn-primary">Search</button>
+		<button onClick={clear} className="btn btn-danger ml-4">
 		
         Clear
       </button>
-	  
+	  </div>
         
         
 
@@ -218,6 +348,7 @@ function ViewDoctorComponent(props) {
         <th scope="col">Phone Number</th>
         <th scope="col">License Number</th>
         <th scope="col">Hospital ID</th>
+		<th scope="col">Status</th>
       
         </tr>
     </thead>
@@ -230,6 +361,7 @@ function ViewDoctorComponent(props) {
         <td id="phonenumber"></td>
         <td id="lno"></td>
         <td id="hid"></td>
+		<td id="status"></td>
         </tr>
 
     </tbody>

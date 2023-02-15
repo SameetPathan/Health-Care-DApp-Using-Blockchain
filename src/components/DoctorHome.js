@@ -7,7 +7,7 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 
-const DoctorContractAddress="0x2aFC6129D84306538922469F9cb6F06A4402C16F";
+const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
 	{
 		"inputs": [
@@ -57,9 +57,69 @@ const abiDoctorContract=[
 				"type": "uint256"
 			}
 		],
-		"name": "addHospital",
+		"name": "addDoctor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllDoctor",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DoctorName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Speciality",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "CertificateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "HospitalID",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct DoctorContract.DoctorData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -70,7 +130,7 @@ const abiDoctorContract=[
 				"type": "address"
 			}
 		],
-		"name": "getHospital",
+		"name": "getDoctor",
 		"outputs": [
 			{
 				"internalType": "string",
@@ -107,6 +167,19 @@ const abiDoctorContract=[
 				"name": "",
 				"type": "string"
 			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
 			{
 				"internalType": "uint256",
 				"name": "",
@@ -148,7 +221,7 @@ const abiDoctorContract=[
 				"type": "uint256"
 			}
 		],
-		"name": "updateHospital",
+		"name": "updateDoctor",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -212,7 +285,7 @@ function DoctorHome(props) {
             />
         
             <form className="form-horizontal">
-                <Link to="/adddoctor" className="btn btn-default">
+                <Link to="/adddoctor" className="btn btn-success">
                 Add Yourself and get Verified
                 </Link>
 

@@ -16,9 +16,10 @@ struct PatientData{
         string Medicines;
         string Health_Survey_Lab_Test;
 		string AnyPastHistroy;
-		string DoctorHospName;
+		address Doctorid;
 }
 
+address myAddress = address(0x0);
 
 PatientData []patient;
 
@@ -34,7 +35,8 @@ function addPatient(
         string memory Medicines,
         string memory Health_Survey_Lab_Test,
 		string memory AnyPastHistroy,
-		string memory DoctorHospName
+		address Doctorid
+		
         
        
 ) public{
@@ -49,7 +51,7 @@ function addPatient(
         Medicines,
         Health_Survey_Lab_Test,
 		AnyPastHistroy,
-		DoctorHospName
+		Doctorid
         
       );
 	patient.push(e);
@@ -67,7 +69,7 @@ function getPatient(
 	string memory,
     string memory,
 	string memory,
-	string memory
+	address
 ){
 	uint i;
 	for(i=0;i<patient.length;i++)
@@ -86,7 +88,7 @@ function getPatient(
         e.Medicines,
         e.Health_Survey_Lab_Test,
 		e.AnyPastHistroy,
-		e.DoctorHospName
+		e.Doctorid
         );
 		}
 	}
@@ -100,7 +102,7 @@ function getPatient(
 			"Not Found",
 			"Not Found",
 			"Not Found",
-            "Not Found");
+			myAddress);
     }
 
 	 function getBalance() public view returns(uint256){
@@ -108,4 +110,13 @@ function getPatient(
 		owner=msg.sender;
         return owner.balance;
     }
+
+	function getAllPatient() public view returns (PatientData[] memory) {
+    return patient;
+	}
+
+		function getNumberOfRecords() public view returns (uint) {
+    return patient.length;
+}
+
 }

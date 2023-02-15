@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.16;
 
-contract HospitalContract{
+contract DoctorContract{
 
-struct HospitalData{
+struct DoctorData{
     
 		address Doctorid;
         string HospitalName;
@@ -19,10 +19,10 @@ struct HospitalData{
 		
 }
 
-HospitalData []Hospital;
+DoctorData []Doctor;
 
 
-function addHospital(
+function addDoctor(
 		address Doctorid,
         string memory HospitalName,
         string memory DoctorName,
@@ -35,8 +35,8 @@ function addHospital(
 		
        
 ) public{
-	HospitalData memory e
-		=HospitalData(
+	DoctorData memory e
+		=DoctorData(
 		Doctorid,
        	HospitalName,
         DoctorName,
@@ -48,14 +48,14 @@ function addHospital(
 		status
 
       );
-	Hospital.push(e);
+	Doctor.push(e);
 }
 
-function updateHospital(address Doctorid,uint status) public{
+function updateDoctor(address Doctorid,uint status) public{
 uint i;
-for(i=0;i<Hospital.length;i++)
+for(i=0;i<Doctor.length;i++)
 {
-HospitalData memory e =Hospital[i];
+DoctorData memory e =Doctor[i];
 	if(e.Doctorid==Doctorid)
 	{
 			e.HospitalName=e.HospitalName;
@@ -66,13 +66,13 @@ HospitalData memory e =Hospital[i];
     		e.CertificateNumber=e.CertificateNumber;
 			e.HospitalID=e.HospitalID;
 			e.status=status;
-			Hospital[i]=e;
+			Doctor[i]=e;
 			return;
 		}
 	}
 }
 
-function getHospital(
+function getDoctor(
 	address Doctorid
 ) public view returns(
 	string memory,
@@ -86,10 +86,10 @@ function getHospital(
 	
 ){
 	uint i;
-	for(i=0;i<Hospital.length;i++)
+	for(i=0;i<Doctor.length;i++)
 	{
-		HospitalData memory e
-			=Hospital[i];
+		DoctorData memory e
+			=Doctor[i];
 		
 		if(e.Doctorid==Doctorid)
 		{
@@ -121,10 +121,10 @@ function getHospital(
 
 function getStatus(address Doctorid) public view returns(uint){
 	uint i;
-	for(i=0;i<Hospital.length;i++)
+	for(i=0;i<Doctor.length;i++)
 	{
-		HospitalData memory e
-			=Hospital[i];
+		DoctorData memory e
+			=Doctor[i];
 		if(e.Doctorid==Doctorid)
 		{
 			return(e.status);
@@ -132,5 +132,13 @@ function getStatus(address Doctorid) public view returns(uint){
 	}
 	return(0);
     }
+
+	function getAllDoctor() public view returns (DoctorData[] memory) {
+    return Doctor;
+	}
+
+		function getNumberOfRecords() public view returns (uint) {
+    	return Doctor.length;
+	}
 
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
 
-const PatientContractAddress="0x9b24F69e9D6683F02659ce6906C463f8b01FAAD6";
+const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
 const abiPatientContract=[
 	{
 		"inputs": [
@@ -57,9 +57,9 @@ const abiPatientContract=[
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "DoctorHospName",
-				"type": "string"
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
 			}
 		],
 		"name": "addPatient",
@@ -69,7 +69,90 @@ const abiPatientContract=[
 	},
 	{
 		"inputs": [],
+		"name": "getAllPatient",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "patientid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "FullName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Gender",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "DateOfBirth",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Diagnoses",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Medicines",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Health_Survey_Lab_Test",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "AnyPastHistroy",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
+					}
+				],
+				"internalType": "struct PatientContract.PatientData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "getBalance",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -136,9 +219,9 @@ const abiPatientContract=[
 				"type": "string"
 			},
 			{
-				"internalType": "string",
+				"internalType": "address",
 				"name": "",
-				"type": "string"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -171,13 +254,13 @@ function ViewPatientComponent(props) {
 
            
             const Txn2 = await PatientContract.getPatient(patientid);
-            console.log(Txn2[0]);
+       
 
             document.getElementById("name").innerHTML=Txn2[0];
             document.getElementById("gender").innerHTML=Txn2[1];
-			document.getElementById("dateofbirth").innerHTML=Txn2[2];
-			document.getElementById("phonenumber").innerHTML=Txn2[3];
-            document.getElementById("address").innerHTML=Txn2[4];
+			document.getElementById("address").innerHTML=Txn2[2];
+			document.getElementById("dateofbirth").innerHTML=Txn2[3];
+			document.getElementById("phonenumber").innerHTML=Txn2[4];
             document.getElementById("diagnoses").innerHTML=Txn2[5];
             document.getElementById("medicines").innerHTML=Txn2[6];
             document.getElementById("healthsurvey").innerHTML=Txn2[7];
@@ -185,8 +268,9 @@ function ViewPatientComponent(props) {
 			document.getElementById("doctorhospname").innerHTML=Txn2[9];
     
             console.log("Mining... please wait");
+			console.log(Txn2);
 
-           // console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${Txn2.hash}`);
+           console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${Txn2.hash}`);
             
             //balance capture
         
@@ -238,17 +322,18 @@ function ViewPatientComponent(props) {
             </div>
 
         </form>
+		<div className='container'>
         <button onClick={search} className="btn btn-primary">Search</button>
 		<button onClick={clear} className="btn btn-danger ml-4">
         Clear
       </button>
-        
+	  </div>
         
 
 
     </div>
 
-<div className="container shadow-lg p-3 mb-5 bg-white rounded mt-3">
+<div className="container-fluid shadow-lg p-3 mb-5 bg-white rounded mt-3">
 <table className="table table-bordered">
     <thead className="thead-dark">
         <tr>
@@ -261,7 +346,7 @@ function ViewPatientComponent(props) {
         <th scope="col">Medicines</th>
         <th scope="col">Health Survey/ Lab tests</th>
         <th scope="col">Past History</th>
-		<th scope="col">DoctorHospName</th>
+		<th scope="col">Doctor Id</th>
         </tr>
     </thead>
     <tbody>

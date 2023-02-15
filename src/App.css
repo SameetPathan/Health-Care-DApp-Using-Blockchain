@@ -163,7 +163,7 @@ p.para {
 }
 .form-container .form-horizontal .btn{
     color: #000;
-    background-color: #4ee66f;
+    background-color: #ffffff;
     font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
@@ -176,8 +176,7 @@ p.para {
 }
 .form-container .form-horizontal .btn:hover,
 .form-container .form-horizontal .btn:focus{
-    color: #fff;
-    letter-spacing: 3px;
+    color: #000000;
     box-shadow: none;
     outline: none;
 }
@@ -200,12 +199,11 @@ p.para {
     letter-spacing: 1px;
     border: none;
     border-radius: 50px;
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px rgb(132, 241, 159);
     display: inline-block;
     transition: all 0.3s ease 0s;
 }
  .form-control:focus{
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px #fff;
+    
     outline: none;
 }
 .form-control::placeholder{
@@ -241,10 +239,24 @@ p.para {
   transition: all 0.5s ease 0s;
 }
 
+.bt2{
+    color: #000;
+    background-color: #58ee60;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 12px 15px 11px;
+    border-radius: 20px;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px #fff;
+    border: none;
+    transition: all 0.5s ease 0s;
+  }
+
 
 .btn2:hover,
 .btn2:focus{
-    color: #fff;
+    color: #030303;
     letter-spacing: 3px;
     box-shadow: none;
     outline: none;

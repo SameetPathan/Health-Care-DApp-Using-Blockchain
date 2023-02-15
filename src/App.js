@@ -23,6 +23,9 @@ import PatientHome from './components/PatientHome';
 import DoctorHome from './components/DoctorHome';
 import MedicalHome from './components/MedicalHome';
 import PharmaHome from './components/PharmaHome';
+import ViewOnlyPatient from './components/ViewOnlyPatient';
+import ForceLogin from './components/ForceLogin';
+import AdminPanel from './components/AdminPanel';
 
  
 function App() {
@@ -39,11 +42,15 @@ function App() {
     <div className="App">
  
             <Router>
-          
+
             <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
+            
             <div className='container-fluid mt-4'>
+           
               <Routes> 
+             
                 <Route exact path='/' element={<UserTypeComponent></UserTypeComponent>}></Route>
+            
                 <Route exact path='/patienthome' element={<PatientHome></PatientHome>}></Route>
 
                 <Route exact path='/doctorhome' element={<DoctorHome  DocStatus={DocStatus} setDocStatus={setDocStatus} ></DoctorHome>}></Route>
@@ -59,11 +66,14 @@ function App() {
                 <Route exact path='/viewPharma' element={<ViewPharmaComponent></ViewPharmaComponent>}></Route>
                 <Route exact path='/viewdoctor' element={<ViewDoctorComponent></ViewDoctorComponent>}></Route>
                 <Route exact path='/viewmedical' element={<ViewMedicalComponent></ViewMedicalComponent>}></Route>
+                <Route exact path='/viewonlypatient' element={<ViewOnlyPatient></ViewOnlyPatient>}></Route>
+
+                <Route exact path='/admin' element={<AdminPanel></AdminPanel>}></Route>
          
               </Routes>
             </div>
+          
               <AlertComponent></AlertComponent>
-              
               <FooterComponent></FooterComponent>
     
           </Router>

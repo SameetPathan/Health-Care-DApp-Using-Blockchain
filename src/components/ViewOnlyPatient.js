@@ -2,18 +2,23 @@ import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
 
-const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
-const abiMedicalContract=[
+const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
+const abiPatientContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "Medicalid",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "patientid",
+				"type": "uint256"
 			},
 			{
 				"internalType": "string",
-				"name": "MedicalName",
+				"name": "FullName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Gender",
 				"type": "string"
 			},
 			{
@@ -23,39 +28,64 @@ const abiMedicalContract=[
 			},
 			{
 				"internalType": "string",
+				"name": "DateOfBirth",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
 				"name": "PhoneNumber",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "CertificateNumber",
+				"name": "Diagnoses",
 				"type": "string"
 			},
 			{
-				"internalType": "uint256",
-				"name": "status",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "Medicines",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "Health_Survey_Lab_Test",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "AnyPastHistroy",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "Doctorid",
+				"type": "address"
 			}
 		],
-		"name": "addMedical",
+		"name": "addPatient",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "getAllMedical",
+		"name": "getAllPatient",
 		"outputs": [
 			{
 				"components": [
 					{
-						"internalType": "address",
-						"name": "Medicalid",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "patientid",
+						"type": "uint256"
 					},
 					{
 						"internalType": "string",
-						"name": "MedicalName",
+						"name": "FullName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Gender",
 						"type": "string"
 					},
 					{
@@ -65,21 +95,41 @@ const abiMedicalContract=[
 					},
 					{
 						"internalType": "string",
+						"name": "DateOfBirth",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
 						"name": "PhoneNumber",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "CertificateNumber",
+						"name": "Diagnoses",
 						"type": "string"
 					},
 					{
-						"internalType": "uint256",
-						"name": "status",
-						"type": "uint256"
+						"internalType": "string",
+						"name": "Medicines",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Health_Survey_Lab_Test",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "AnyPastHistroy",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "Doctorid",
+						"type": "address"
 					}
 				],
-				"internalType": "struct MedicalContract.MedicalData[]",
+				"internalType": "struct PatientContract.PatientData[]",
 				"name": "",
 				"type": "tuple[]"
 			}
@@ -88,35 +138,9 @@ const abiMedicalContract=[
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "Medicalid",
-				"type": "address"
-			}
-		],
-		"name": "getMedical",
+		"inputs": [],
+		"name": "getBalance",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
 			{
 				"internalType": "uint256",
 				"name": "",
@@ -142,43 +166,70 @@ const abiMedicalContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "address",
-				"name": "Medicalid",
-				"type": "address"
+				"internalType": "uint256",
+				"name": "patientid",
+				"type": "uint256"
 			}
 		],
-		"name": "getStatus",
+		"name": "getPatient",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "string",
 				"name": "",
-				"type": "uint256"
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "Medicalid",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "status",
-				"type": "uint256"
-			}
-		],
-		"name": "updateMedicall",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
 	}
 ];
 
-function ViewMedicalComponent(props) {
+function ViewOnlyPatient(props) {
 
 
 	const clear=()=>{
@@ -193,38 +244,27 @@ function ViewMedicalComponent(props) {
   
             const provider = new ethers.providers.Web3Provider(ethereum);
             const signer = provider.getSigner();
-            const MedicalContract= new ethers.Contract(MedicalContractAddress, abiMedicalContract, signer);
+            const PatientContract= new ethers.Contract(PatientContractAddress, abiPatientContract, signer);
             //datacapture
-            const medicalid=document.getElementById("medid").value;
+            const patientid=document.getElementById("patientid").value;
         
             //start 
     
             console.log("Initialize");
 
            
-            const Txn2 = await MedicalContract.getMedical(medicalid);
-            console.log(Txn2);
+            const Txn2 = await PatientContract.getPatient(patientid);
+       
 
-   
-
-            document.getElementById("mname").innerHTML=Txn2[0];
-			document.getElementById("address").innerHTML=Txn2[1];
-            document.getElementById("phonenumber").innerHTML=Txn2[2];
-            document.getElementById("lno").innerHTML=Txn2[3];
-
-
-			if(Txn2[4]=="1"){
-				document.getElementById("status").innerHTML="Verified";
-				document.getElementById("status").style.backgroundColor="green";
-			}
-			else{
-				document.getElementById("status").innerHTML="Not Verified";
-				document.getElementById("status").style.backgroundColor="red";
-			}
-			
+            document.getElementById("name").innerHTML=Txn2[0];
+			document.getElementById("address").innerHTML=Txn2[2];
+			document.getElementById("phonenumber").innerHTML=Txn2[4];
+            document.getElementById("medicines").innerHTML=Txn2[6];
+    
             console.log("Mining... please wait");
+			console.log(Txn2);
 
-           // console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${Txn2.hash}`);
+           console.log(`Mined, see transaction: https://rinkeby.etherscan.io/tx/${Txn2.hash}`);
             
             //balance capture
         
@@ -258,7 +298,7 @@ function ViewMedicalComponent(props) {
   return (
       <>
 	<div className="alert alert-info text-center" role="alert">
-    Medical Information Search Panel
+    Patient Information Search Panel
     </div>
 
     <div className="container shadow-lg p-3 mb-5 bg-white rounded mt-3">
@@ -268,8 +308,8 @@ function ViewMedicalComponent(props) {
             Enter ID to Search
             </div>
             <div className="col-md-6 mb-3">
-            <label htmlFor="validationCustom01">Medical ID</label>
-            <input type="text" className="form-control" id="medid"  required/>
+            <label htmlFor="validationCustom01">Patient ID</label>
+            <input type="number" className="form-control" id="patientid"  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
@@ -281,32 +321,28 @@ function ViewMedicalComponent(props) {
 		<button onClick={clear} className="btn btn-danger ml-4">
         Clear
       </button>
-        
 	  </div>
+        
 
 
     </div>
 
-<div className="container shadow-lg p-3 mb-5 bg-white rounded mt-3">
+<div className="container-fluid shadow-lg p-3 mb-5 bg-white rounded mt-3">
 <table className="table table-bordered">
     <thead className="thead-dark">
         <tr>
-
-        <th scope="col">Medical Name</th>
-		<th scope="col">Address</th>
-        <th scope="col">Phone Number</th>
-        <th scope="col">License Number</th>
-		<th scope="col">Status</th>
-      
+        <th scope="col">Full Name</th>
+		<th scope="col">PhoneNumber</th>
+        <th scope="col">Address</th>
+        <th scope="col">Medicines</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-        <td id="mname"></td>
+        <td id="name"></td>
+		<td id="phonenumber"></td>
         <td id="address"></td>
-        <td id="phonenumber"></td>
-        <td id="lno"></td>
-		<td id="status"></td>
+        <td id="medicines"></td>
         </tr>
 
     </tbody>
@@ -318,4 +354,4 @@ function ViewMedicalComponent(props) {
   )
 }
 
-export default ViewMedicalComponent
+export default ViewOnlyPatient

@@ -105,4 +105,14 @@ function getMedical(
 	return(0);
     }
 
+	function getAllMedical() public view returns (MedicalData[] memory) {
+    return Medical;
+	}
+
+		function getNumberOfRecords() public view returns (uint) {
+    	return Medical.length;
+	}
+
+
+
 }

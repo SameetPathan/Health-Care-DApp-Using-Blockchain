@@ -1,16 +1,16 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
+import { useState } from 'react';
 
-
-const MedicalContractAddress="0x832e01ccDF5F56FaB6828cB1E8F26E02261702F5";
+const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
 const abiMedicalContract=[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "Medicalid",
-				"type": "uint256"
+				"type": "address"
 			},
 			{
 				"internalType": "string",
@@ -31,6 +31,11 @@ const abiMedicalContract=[
 				"internalType": "string",
 				"name": "CertificateNumber",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
 			}
 		],
 		"name": "addMedical",
@@ -39,11 +44,56 @@ const abiMedicalContract=[
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "getAllMedical",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "address",
+						"name": "Medicalid",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "MedicalName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "Address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "PhoneNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "CertificateNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					}
+				],
+				"internalType": "struct MedicalContract.MedicalData[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "Medicalid",
-				"type": "uint256"
+				"type": "address"
 			}
 		],
 		"name": "getMedical",
@@ -67,15 +117,81 @@ const abiMedicalContract=[
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getNumberOfRecords",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Medicalid",
+				"type": "address"
+			}
+		],
+		"name": "getStatus",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "Medicalid",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "status",
+				"type": "uint256"
+			}
+		],
+		"name": "updateMedicall",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ];
 
 
 function AddMedicalComponent(props) {
+
+  const [account, setAccount] = useState(null);
+
+  const setacc=async()=>{
+
+    const { ethereum } = window;
+    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    setAccount(accounts[0]);
+    //account = accounts[0];
+ 
+  }
 
   
   const clear=()=>{
@@ -95,7 +211,7 @@ function AddMedicalComponent(props) {
   
   
             //datacapture
-            const Medicalid=document.getElementById("mid").value;
+            const Medicalid=document.getElementById("pid").value;
           
             const MedicalName=document.getElementById("mname").value;
            
@@ -115,7 +231,7 @@ function AddMedicalComponent(props) {
     
             //console.log(Fullname)
             //console.log(idu)
-            let Txn2 = await MedicalContract.addMedical(Medicalid,MedicalName,Address,phonenumber,CertificateNumber);
+            let Txn2 = await MedicalContract.addMedical(Medicalid,MedicalName,Address,phonenumber,CertificateNumber,0);
     
             
             console.log("Mining... please wait");
@@ -159,6 +275,10 @@ function AddMedicalComponent(props) {
         }
       }
 
+      useEffect(() => {
+        setacc();
+      });
+  
 
 
   
@@ -181,7 +301,7 @@ function AddMedicalComponent(props) {
 
         <div className="col-lg-4 col-md-6 mb-3 ">
             <label htmlFor="validationCustom01">Medical ID</label>
-            <input type="number" className="form-control" id="pid"  required/>
+            <input type="text" value={account} disabled className="form-control" id="pid"  required/>
             <div className="valid-feedback">
                 Looks good!
             </div>
@@ -267,12 +387,13 @@ function AddMedicalComponent(props) {
      
         
         </form>
-        <button onClick={savedata} className="btn btn-primary mb-5">Save</button>
+        <div className='container'>
+        <button onClick={savedata} className="btn bt2 btn-success mb-5">Save</button>
       
         <button onClick={clear} className="btn bt1 btn-danger">
         Clear
       </button>
-
+</div>
     </div>
     </>
   )
