@@ -40,9 +40,9 @@ function App() {
   return <>
 
     <div className="App">
- 
-            <Router>
 
+          {currentAccount?
+            <Router>
             <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
             
             <div className='container-fluid mt-4'>
@@ -77,8 +77,21 @@ function App() {
               <FooterComponent></FooterComponent>
     
           </Router>
+           
+          :
+          <Router>
+              <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
+              <div>
+                <Routes> 
+                  <Route exact path='/' element={<ForceLogin></ForceLogin>}></Route>
+                </Routes>
+              </div>
+                <FooterComponent></FooterComponent>
+              </Router>
+            
+        }
         </div>
-
+         
   
   </>;
 }

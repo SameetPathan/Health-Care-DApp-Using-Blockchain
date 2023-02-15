@@ -261,3 +261,15 @@ p.para {
     box-shadow: none;
     outline: none;
 }
+
+
+
+
+.page {
+    box-sizing:border-box;
+    left:50%;
+    position:fixed;
+    text-align:center;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }

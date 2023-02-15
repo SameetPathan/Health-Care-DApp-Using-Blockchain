@@ -6,7 +6,7 @@ function Navbarcomponent(props) {
    
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div className="logo-holder logo-3 mr-3">
           <a>
             <h3>Smart Care</h3>
