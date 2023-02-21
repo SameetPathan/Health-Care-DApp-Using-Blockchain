@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useState } from 'react';
+import Loader from './Loader';
 
 const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
 const abiPharmaContract=[
@@ -308,6 +309,7 @@ function ViewPharmaComponent(props) {
   
   return (
       <>
+	  <Loader></Loader>
 	<div className="alert alert-info text-center" role="alert">
     Pharma(Medicines) Information Search Panel
     </div>

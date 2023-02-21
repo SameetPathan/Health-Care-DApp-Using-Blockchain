@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
+import Loader from './Loader';
 
 const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
 const abiMedicalContract=[
@@ -257,6 +258,7 @@ function ViewMedicalComponent(props) {
 
   return (
       <>
+	  <Loader></Loader>
 	<div className="alert alert-info text-center" role="alert">
     Medical Information Search Panel
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ethers } from 'ethers';
+import Loader from './Loader';
 
 const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
@@ -303,6 +304,7 @@ function ViewDoctorComponent(props) {
 
   return (
       <>
+	  <Loader></Loader>
 	<div className="alert alert-info text-center" role="alert">
     Doctor and Related Hospital Information Search Panel
     </div>
@@ -367,7 +369,6 @@ function ViewDoctorComponent(props) {
     </tbody>
     </table>
 
-    
 </div>
 </>
   )

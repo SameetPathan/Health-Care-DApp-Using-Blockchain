@@ -5,17 +5,15 @@ import {
     Route,
     Link
   } from 'react-router-dom';
+import Loader from './Loader';
+import OurService from './OurService';
 
 function UserTypeComponent() {
   return (
     <>
-      <div class="alert alert-success text-center" role="alert">
-        Welcome To Jarvis Systems
-      </div>
+    <Loader></Loader>
+    <OurService to={" To"} text={"Jarvis Systems"}></OurService>
   
-
-   
-
  <div className='d-lg-flex align-items-lg-center'>
       
     <div class="form-bg">
@@ -26,7 +24,7 @@ function UserTypeComponent() {
             class="card-img-top shadow rounded mb-2"
             alt="..."
             />
-            <h3 class="title">Doctor ?</h3>
+            
             <form class="form-horizontal">
                 <Link to="/doctorhome" class="btn btn-default">
                 Doctor Dashboard 
@@ -46,7 +44,7 @@ function UserTypeComponent() {
             class="card-img-top shadow rounded mb-2"
             alt="..."
             />
-            <h3 class="title">Patient ?</h3>
+           
                 <form class="form-horizontal">
                 <Link to="/patienthome" class="btn btn-default">
                         Patient Dashboard 
@@ -64,7 +62,7 @@ function UserTypeComponent() {
             class="card-img-top shadow rounded mb-2"
             alt="..."
                 />
-            <h3 class="title">Medical ?</h3>
+            
             <form class="form-horizontal">
             <Link to="/medicalhome" class="btn btn-default">
                         Medical Dashboard 
@@ -76,14 +74,14 @@ function UserTypeComponent() {
 
     <div class="form-bg">
         <div class="form-container ">
-              
+
             <img
             src={process.env.PUBLIC_URL + "/pharma.jpg"}
             height="180px"
             class="card-img-top shadow rounded mb-2"
             alt="..."
             />
-            <h3 class="title">Pharma ?</h3>
+         
             <form class="form-horizontal">
             <Link to="/pharmahome" class="btn btn-default">
                         Pharma Dashboard 

@@ -8,8 +8,8 @@ const MatrixAnimation = () => {
     const ctx = canvas.getContext('2d');
 
     let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = 500);
-    if (canvas.height < 300) {
+    let h = (canvas.height = 550);
+    if (canvas.height < 350) {
       h = canvas.height = 300;
     }
     let cols = Math.floor(w / 20) + 1;
@@ -19,11 +19,11 @@ const MatrixAnimation = () => {
       if (canvas.width < window.innerWidth) {
         w = canvas.width = window.innerWidth;
       }
-      if (canvas.height < 500) {
-        h = canvas.height = 500;
+      if (canvas.height < 550) {
+        h = canvas.height = 550;
       }
-      if (canvas.height < 300) {
-        h = canvas.height = 300;
+      if (canvas.height < 350) {
+        h = canvas.height = 350;
       }
       cols = Math.floor(w / 20) + 1;
       ypos = Array(cols).fill(0);

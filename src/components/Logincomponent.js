@@ -1,5 +1,6 @@
 import { useEffect,React } from 'react';
 import { ethers } from 'ethers';
+import Loader from './Loader';
 
 const BalanceContractABI=[
 	{
@@ -31,6 +32,8 @@ function Logincomponent(props) {
 		try {
 			props.setCurrentAccount("");
       props.setCurrentBalanace("");
+
+      <Loader></Loader>
 		  } catch (err) {
 			console.log(err);
 		  }
@@ -113,6 +116,7 @@ function Logincomponent(props) {
 
   return (
     <>
+    <Loader></Loader>
     {props.currentAccount ?  <div className="form-inline">
         <button className="btn btn-outline-danger my-2 my-sm-0 ml-2" onClick={logout} >Logout</button>
     </div>

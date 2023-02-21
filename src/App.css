@@ -273,3 +273,9 @@ p.para {
     top:50%;
     transform:translate(-50%, -50%);
   }
+
+.bgd{
+    background-color: #051922;
+    color: #fff;
+}
+

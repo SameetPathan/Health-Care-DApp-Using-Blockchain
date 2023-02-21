@@ -5,11 +5,12 @@ import {
     Route,
     Link
   } from 'react-router-dom';
+import Loader from './Loader';
 
 function PatientHome() {
   return (
     <>
-
+<Loader></Loader>
 <div class="alert alert-success text-center" role="alert">
   Patient Home
 </div>

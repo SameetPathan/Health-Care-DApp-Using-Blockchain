@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useState } from 'react';
+import Loader from './Loader';
 
 
 const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
@@ -351,6 +352,7 @@ function AddPatientComponent(props) {
 
   return (
     <>
+	<Loader></Loader>
     <div className="alert alert-info text-center" role="alert">
     Patient Information Add Panel
     </div>

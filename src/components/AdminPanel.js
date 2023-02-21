@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useState } from 'react';
 import { PharmaAddress } from './ABI_ADDRESS';
+import Loader from './Loader';
 
 const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
@@ -1004,6 +1005,7 @@ function AdminPanel() {
 
   return (
     <>
+	<Loader></Loader>
    <div className="container shadow-lg p-3 mb-5 bg-white rounded mt-3">
         <form className="needs-validation" id="myForm" noValidate>
 

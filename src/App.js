@@ -26,6 +26,7 @@ import PharmaHome from './components/PharmaHome';
 import ViewOnlyPatient from './components/ViewOnlyPatient';
 import ForceLogin from './components/ForceLogin';
 import AdminPanel from './components/AdminPanel';
+import Loader from './components/Loader';
 
  
 function App() {
@@ -40,15 +41,16 @@ function App() {
   return <>
 
     <div className="App">
+        
+        <Loader></Loader>
 
           {currentAccount?
             <Router>
             <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
-            
             <div className='container-fluid mt-4'>
            
               <Routes> 
-             
+               
                 <Route exact path='/' element={<UserTypeComponent></UserTypeComponent>}></Route>
             
                 <Route exact path='/patienthome' element={<PatientHome></PatientHome>}></Route>
@@ -81,11 +83,12 @@ function App() {
           :
           <Router>
               <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
-              <div>
+              <>
                 <Routes> 
                   <Route exact path='/' element={<ForceLogin></ForceLogin>}></Route>
+                  <Route exact path='*' element={<ForceLogin></ForceLogin>}></Route>
                 </Routes>
-              </div>
+              </>
                 <FooterComponent></FooterComponent>
               </Router>
             
@@ -97,6 +100,9 @@ function App() {
 }
 
 export default App;
+
+
+
 
 
 

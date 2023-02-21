@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useState } from 'react';
 import { clear } from '@testing-library/user-event/dist/clear';
+import Loader from './Loader';
 
 
 const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
@@ -338,6 +339,7 @@ function AddPharma(props) {
 
   return (
     <>
+	<Loader></Loader>
     <div className="alert alert-info text-center" role="alert">
     Pharma (Medicine) Information Add Panel
     </div>

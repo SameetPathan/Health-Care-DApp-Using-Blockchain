@@ -6,6 +6,8 @@ import {
     Link
   } from 'react-router-dom';
 import { ethers } from 'ethers';
+import Loader from './Loader';
+import OurService from './OurService';
 
 const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
 const abiDoctorContract=[
@@ -266,10 +268,8 @@ function DoctorHome(props) {
 
   return (
     <>
-
-<div className="alert alert-success text-center" role="alert">
-  Doctor Home
-</div>
+<Loader></Loader>
+<OurService text={"Doctor"}></OurService>
 
 {props.DocStatus?
 <div className="d-lg-flex align-items-lg-center">
@@ -283,7 +283,7 @@ function DoctorHome(props) {
             className="card-img-top shadow rounded mb-2"
             alt="..."
             />
-        
+        	
             <form className="form-horizontal">
                 <Link to="/adddoctor" className="btn btn-success">
                 Add Yourself and get Verified
@@ -308,7 +308,6 @@ function DoctorHome(props) {
             className="card-img-top shadow rounded mb-2"
             alt="..."
             />
-           
             <form className="form-horizontal">
                 <Link to="/addpatient" className="btn btn-default">
                 Add Patient
