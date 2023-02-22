@@ -35,3 +35,35 @@
     from, to { border-color: transparent }
     50% { border-color: #fff }
   }
+
+  /* CSS styles for my-div on mobile */
+@media only screen and (max-width: 767px) {
+  .my-div {
+    font-size: 18px;
+    padding: 10px;
+    /* additional mobile styles */
+  }
+}
+
+/* CSS styles for my-div on laptop */
+@media only screen and (min-width: 768px) {
+  .my-div {
+    font-size: 36px;
+    padding: 20px;
+    /* additional laptop styles */
+  }
+}
+
+
+@media only screen and (max-width: 767px) {
+  .bg-img{
+    height: 700px;
+  }
+}
+
+/* CSS styles for my-div on laptop */
+@media only screen and (min-width: 768px) {
+  .bg-img{
+    height: 500px;
+  }
+}

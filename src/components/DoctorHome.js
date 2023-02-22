@@ -271,7 +271,11 @@ function DoctorHome(props) {
 <Loader></Loader>
 <OurService text={"Doctor"}></OurService>
 
-{props.DocStatus?
+{props.DocStatus?<>
+	<div class="alert alert-danger" role="alert">
+		Your are Not Verified
+		</div>
+
 <div className="d-lg-flex align-items-lg-center">
 
 
@@ -293,7 +297,7 @@ function DoctorHome(props) {
             </div>
       </div>
 </div>
-
+</>
 :
 
 
@@ -302,6 +306,7 @@ function DoctorHome(props) {
 
   <div className="form-bg">
         <div className="form-container ">
+		<span class="badge badge-success">Verified</span>
             <img
             src={process.env.PUBLIC_URL + "/patient.jpg"}
             height="180px"
@@ -319,6 +324,7 @@ function DoctorHome(props) {
 
       <div className="form-bg">
         <div className="form-container ">
+		<span class="badge badge-success">Verified</span>
             <img
             src={process.env.PUBLIC_URL + "/patient.jpg"}
             height="180px"

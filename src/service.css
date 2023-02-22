@@ -22,7 +22,7 @@
   
   .section-title p {
     font-size: 15px;
-    width: 530px;
+    width: px;
     margin: 0 auto;
     color: #555;
     margin-top: 10px;
@@ -30,5 +30,5 @@
   }
   
   .section-title {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
   }

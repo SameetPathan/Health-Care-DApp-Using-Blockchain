@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 import Navbarcomponent from './components/Navbarcomponent';
 import FooterComponent from './components/FooterComponent';
-import AlertComponent from './components/AlertComponent';
+
 import AddDoctor from './components/AddDoctor';
 import AddMedicalComponent from './components/AddMedical';
 import AddPharma from './components/AddPharma';
@@ -47,6 +47,7 @@ function App() {
           {currentAccount?
             <Router>
             <Navbarcomponent setCurrentAccount={setCurrentAccount} setCurrentBalanace={setCurrentBalanace} currentAccount={currentAccount} currentBalance={currentBalance}></Navbarcomponent>
+            
             <div className='container-fluid mt-4'>
            
               <Routes> 
@@ -75,7 +76,7 @@ function App() {
               </Routes>
             </div>
           
-              <AlertComponent></AlertComponent>
+              
               <FooterComponent></FooterComponent>
     
           </Router>

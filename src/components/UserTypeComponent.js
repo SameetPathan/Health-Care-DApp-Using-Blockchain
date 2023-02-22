@@ -16,17 +16,17 @@ function UserTypeComponent() {
   
  <div className='d-lg-flex align-items-lg-center'>
       
-    <div class="form-bg">
-        <div class="form-container ">
+    <div className="form-bg">
+        <div className="form-container ">
             <img
             src={process.env.PUBLIC_URL + "/doctor.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
             
-            <form class="form-horizontal">
-                <Link to="/doctorhome" class="btn btn-default">
+            <form className="form-horizontal">
+                <Link to="/doctorhome" className="btn btn-default">
                 Doctor Dashboard 
                 </Link>
 
@@ -36,17 +36,17 @@ function UserTypeComponent() {
 
        
 
-    <div class="form-bg">
-        <div class="form-container ">
+    <div className="form-bg">
+        <div className="form-container ">
             <img
             src={process.env.PUBLIC_URL + "/patient.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
            
-                <form class="form-horizontal">
-                <Link to="/patienthome" class="btn btn-default">
+                <form className="form-horizontal">
+                <Link to="/patienthome" className="btn btn-default">
                         Patient Dashboard 
                 </Link>
                 </form> 
@@ -54,17 +54,17 @@ function UserTypeComponent() {
       </div>
 
 
-    <div class="form-bg">
-        <div class="form-container "> 
+    <div className="form-bg">
+        <div className="form-container "> 
             <img
             src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
                 />
             
-            <form class="form-horizontal">
-            <Link to="/medicalhome" class="btn btn-default">
+            <form className="form-horizontal">
+            <Link to="/medicalhome" className="btn btn-default">
                         Medical Dashboard 
             </Link>
 
@@ -72,18 +72,18 @@ function UserTypeComponent() {
         </div>
     </div>
 
-    <div class="form-bg">
-        <div class="form-container ">
+    <div className="form-bg">
+        <div className="form-container ">
 
             <img
             src={process.env.PUBLIC_URL + "/pharma.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
          
-            <form class="form-horizontal">
-            <Link to="/pharmahome" class="btn btn-default">
+            <form className="form-horizontal">
+            <Link to="/pharmahome" className="btn btn-default">
                         Pharma Dashboard 
             </Link>
 

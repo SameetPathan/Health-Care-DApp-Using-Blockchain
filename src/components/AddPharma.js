@@ -322,6 +322,7 @@ function AddPharma(props) {
         } catch (err) {
           console.log(err);
           var elem = document.getElementById("alertidf");
+		  
 		elem.classList.add("show");
 		setTimeout(function(){
 			elem.classList.remove("show");

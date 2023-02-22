@@ -7,6 +7,7 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 import Loader from './Loader';
+import OurService from './OurService';
 
 const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
 const abiMedicalContract=[
@@ -223,16 +224,16 @@ function MedicalHome(props) {
   return (
     <>
 <Loader></Loader>
-<div className="alert alert-success text-center" role="alert">
-  Medical Home
-</div>
+<OurService text={"Medical"}></OurService>
 
-{props.MedStatus?
+{props.MedStatus?<>
+	<div class="alert alert-danger" role="alert">
+		Your are Not Verified
+		</div>
 <div className="d-lg-flex align-items-lg-center">
-
-
       <div className="form-bg">
         <div className="form-container ">
+	
             <img
             src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
@@ -249,13 +250,14 @@ function MedicalHome(props) {
             </div>
       </div>
 </div>
-
+</>
 :
 
 <div className="d-lg-flex align-items-lg-center">
 
       <div className="form-bg">
         <div className="form-container ">
+		<span class="badge badge-success">Verified</span>
             <img
             src={process.env.PUBLIC_URL + "/patient.jpg"}
             height="180px"

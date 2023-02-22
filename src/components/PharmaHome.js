@@ -7,6 +7,7 @@ import {
   } from 'react-router-dom';
 import { ethers } from 'ethers';
 import Loader from './Loader';
+import OurService from './OurService';
 
 const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
 const abiPharmaContract=[
@@ -261,9 +262,7 @@ function PharmaHome() {
   return (
     <>
 <Loader></Loader>
-<div className="alert alert-success text-center" role="alert">
-  Pharma Home
-</div>
+<OurService text={"Pharma"}></OurService>
 
 <div className="d-lg-flex align-items-lg-center">
 

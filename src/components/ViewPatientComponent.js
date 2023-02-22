@@ -275,7 +275,8 @@ function ViewPatientComponent(props) {
             
             //balance capture
         
-            var elem = document.getElementById("alertid");
+           var elem = document.getElementById("alertid");
+			
 		  elem.classList.add("show");
 		  setTimeout(function(){
 			elem.classList.remove("show");
@@ -284,6 +285,7 @@ function ViewPatientComponent(props) {
           } else {
             console.log("Ethereum object does not exist");
             var elem = document.getElementById("alertidf");
+		
             elem.classList.add("show");
             setTimeout(function(){
               elem.classList.remove("show");
@@ -294,6 +296,7 @@ function ViewPatientComponent(props) {
         } catch (err) {
           console.log(err);
           var elem = document.getElementById("alertidf");
+		  
 		elem.classList.add("show");
 		setTimeout(function(){
 			elem.classList.remove("show");

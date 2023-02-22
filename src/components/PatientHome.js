@@ -6,30 +6,31 @@ import {
     Link
   } from 'react-router-dom';
 import Loader from './Loader';
+import OurService from './OurService';
 
 function PatientHome() {
   return (
     <>
 <Loader></Loader>
-<div class="alert alert-success text-center" role="alert">
-  Patient Home
-</div>
+<OurService text={"User"}></OurService>
 
 
 
 <div className='d-lg-flex align-items-lg-center'>
-      
-    <div class="form-bg">
-        <div class="form-container ">
+
+    <div className="form-bg">
+       
+        <div className="form-container ">
+        
             <img
             src={process.env.PUBLIC_URL + "/doctor.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
           
-            <form class="form-horizontal">
-                <Link to="/viewdoctor" class="btn btn-default">
+            <form className="form-horizontal">
+                <Link to="/viewdoctor" className="btn btn-default">
                     Verify Doctor
                 </Link>
 
@@ -39,17 +40,17 @@ function PatientHome() {
 
        
 
-    <div class="form-bg">
-        <div class="form-container ">
+    <div className="form-bg">
+        <div className="form-container ">
             <img
             src={process.env.PUBLIC_URL + "/patient.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
            
-                <form class="form-horizontal">
-                <Link to="/viewpatient" class="btn btn-default">
+                <form className="form-horizontal">
+                <Link to="/viewpatient" className="btn btn-default">
                         View Patient Details
                 </Link>
                 </form> 
@@ -57,16 +58,16 @@ function PatientHome() {
       </div>
 
 
-    <div class="form-bg">
-        <div class="form-container "> 
+    <div className="form-bg">
+        <div className="form-container "> 
             <img
             src={process.env.PUBLIC_URL + "/medical.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
                 />
-            <form class="form-horizontal">
-            <Link to="/viewmedical" class="btn btn-default">
+            <form className="form-horizontal">
+            <Link to="/viewmedical" className="btn btn-default">
                         Verify Medical
             </Link>
 
@@ -74,17 +75,17 @@ function PatientHome() {
         </div>
     </div>
 
-    <div class="form-bg">
-        <div class="form-container ">
+    <div className="form-bg">
+        <div className="form-container ">
               
             <img
             src={process.env.PUBLIC_URL + "/pharma.jpg"}
             height="180px"
-            class="card-img-top shadow rounded mb-2"
+            className="card-img-top shadow rounded mb-2"
             alt="..."
             />
-            <form class="form-horizontal">
-            <Link to="/viewPharma" class="btn btn-default">
+            <form className="form-horizontal">
+            <Link to="/viewPharma" className="btn btn-default">
                         Verify Medicine
             </Link>
 

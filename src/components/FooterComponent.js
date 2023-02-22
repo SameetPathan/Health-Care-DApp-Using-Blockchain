@@ -4,8 +4,8 @@ function FooterComponent() {
 
   return(
 <>
-	<div class="copyright ">
-		<div class="container-fluid text-center">
+	<div className="copyright ">
+		<div className="container-fluid text-center">
 					<p>Copyrights &copy; 2023 - <a href="#">Jarvis Systems</a>,  All Rights Reserved.<br></br>
 					</p>
 

@@ -23,15 +23,16 @@ function ForceLogin() {
   <Loader></Loader>
     <div className="home-page">
       <img 
+      className='bg-img'
       src={process.env.PUBLIC_URL + "/bg2.jpg"} 
       alt="Background" 
       style={{ 
           width: '100%', 
-          height: '500px', 
+          //height: '500px', 
           objectFit: 'cover' 
         }} 
       />
-       <div className="typewriter-text">
+       <div className="typewriter-text my-div">
         {text}
       </div>
     </div>
