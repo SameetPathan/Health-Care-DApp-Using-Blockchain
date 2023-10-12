@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import { useState } from 'react';
-import AddPatientComponent from './components/AddPatientComponent';
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +9,7 @@ import {
 } from 'react-router-dom';
 import Navbarcomponent from './components/Navbarcomponent';
 import FooterComponent from './components/FooterComponent';
-
+import AddPatientComponent from './components/AddPatientComponent';
 import AddDoctor from './components/AddDoctor';
 import AddMedicalComponent from './components/AddMedical';
 import AddPharma from './components/AddPharma';

@@ -1,6 +1,12 @@
 import { useEffect,React } from 'react';
 import { ethers } from 'ethers';
 import Loader from './Loader';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
 
 const BalanceContractABI=[
 	{
@@ -23,7 +29,7 @@ const BalanceContractABI=[
 		"type": "function"
 	}
 ];
-const BalanceContractAddress="0x6c7b79071922323cAAEbc1A5D253A2885237527F";
+const BalanceContractAddress="0x97BcA06C815AE57beeeEe96953c6944ea4EDd356";
 
 
 function Logincomponent(props) {
@@ -32,6 +38,7 @@ function Logincomponent(props) {
 		try {
 			props.setCurrentAccount("");
       props.setCurrentBalanace("");
+     
 
       <Loader></Loader>
 		  } catch (err) {
@@ -79,7 +86,7 @@ function Logincomponent(props) {
         try {
           const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
 
-          const name = await ethereum.request({ method: 'eth_getEncryptionPublicKey', params: [accounts[0]] });
+         // const name = await ethereum.request({ method: 'eth_getEncryptionPublicKey', params: [accounts[0]] });
           
           const provider = new ethers.providers.Web3Provider(ethereum);
           const signer = provider.getSigner();
@@ -100,36 +107,16 @@ function Logincomponent(props) {
  useEffect(() => {
       checkWalletIsConnected();
     }, [])
-
-
-   
-         
-          
-          
-    
-
-
-     
-   
-    
-
-   
-
   return (
     <>
     <Loader></Loader>
     {props.currentAccount ?  <div className="form-inline">
-        <button className="btn btn-outline-danger my-2 my-sm-0 ml-2" onClick={logout} >Logout</button>
+    <Link to="/">   <button className="btn btn-outline-danger my-2 my-sm-0 ml-2" onClick={logout} >Logout</button></Link> 
     </div>
     :
     <div className="form-inline">
         <button className="btn btn-outline-success my-2 my-sm-0" onClick={connectWalletHandler} >Login</button>
     </div>}
-    
-    
-    
-    
-     
 
     </>
   )

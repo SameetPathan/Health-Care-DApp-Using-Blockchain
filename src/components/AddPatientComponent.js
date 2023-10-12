@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import { useState } from 'react';
 import Loader from './Loader';
+//import { Buffer } from 'buffer';
+
+//import { create } from 'ipfs-http-client';
 
 
 const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
@@ -232,8 +235,50 @@ const abiPatientContract=[
 	}
 ];
 
-
 function AddPatientComponent(props) {
+
+
+	//const [imageFile, setImageFile] = useState(null);
+ // const [ipfsHash, setIpfsHash] = useState(null);
+/*
+  function handleFileChange(event) {
+    setImageFile(event.target.files[0]);
+	console.log(event.target.files[0])
+	const reader = new FileReader();
+	reader.readAsArrayBuffer(event.target.files[0]);
+	reader.onloadend = async () => {
+		//const ipfs = create();
+		const ipfs = create({
+			host: 'ipfs.infura.io',
+			port: '5001',
+			protocol: 'https'
+		  });
+		const buffer = Buffer.from(reader.result);
+		const { cid } = await ipfs.add(buffer);
+		console.log(`Added file with CID ${cid}`);
+	  };
+  }
+
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+	console.log("call 1")
+    const ipfs = create();
+	console.log("call 2")
+    const formData = new FormData();
+    formData.append('image', imageFile);
+	console.log(formData)
+
+    try {
+      const { path } = await ipfs.add(formData);
+      setIpfsHash(path);
+	  alert("hello")
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+	
+	  */
 
   const [account, setAccount] = useState(null);
 
@@ -353,6 +398,24 @@ function AddPatientComponent(props) {
   return (
     <>
 	<Loader></Loader>
+{/* 
+	<div>
+      <form onSubmit={handleFormSubmit}>
+        <input type="file" onChange={handleFileChange} />
+        <button type="submit">Upload</button>
+      </form>
+      {ipfsHash && <p>IPFS hash: {ipfsHash}</p>}
+    </div>
+
+	{ipfsHash && (
+        <div>
+          <p>IPFS hash: {ipfsHash}</p>
+          <img src={`https://ipfs.io/ipfs/${ipfsHash}`} alt="Uploaded file" />
+        </div>
+      )}
+*/}
+
+
     <div className="alert alert-info text-center" role="alert">
     Patient Information Add Panel
     </div>

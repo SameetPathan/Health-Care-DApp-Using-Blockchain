@@ -14,6 +14,7 @@ function Navbarcomponent(props) {
 
   const handleGoBack = () => {
     window.history.back();
+    
   }
 
   const divStyle = {

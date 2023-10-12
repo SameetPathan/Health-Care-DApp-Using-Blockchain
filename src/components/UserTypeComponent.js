@@ -12,7 +12,7 @@ function UserTypeComponent() {
   return (
     <>
     <Loader></Loader>
-    <OurService to={" To"} text={"Jarvis Systems"}></OurService>
+    {/*<OurService to={" To"} text={"Jarvis Systems"}></OurService>*/}
   
  <div className='d-lg-flex align-items-lg-center'>
       
@@ -26,7 +26,7 @@ function UserTypeComponent() {
             />
             
             <form className="form-horizontal">
-                <Link to="/doctorhome" className="btn btn-default">
+                <Link to="" className="btn btn-default">
                 Doctor Dashboard 
                 </Link>
 
@@ -46,7 +46,7 @@ function UserTypeComponent() {
             />
            
                 <form className="form-horizontal">
-                <Link to="/patienthome" className="btn btn-default">
+                <Link to="" className="btn btn-default">
                         Patient Dashboard 
                 </Link>
                 </form> 
@@ -64,7 +64,7 @@ function UserTypeComponent() {
                 />
             
             <form className="form-horizontal">
-            <Link to="/medicalhome" className="btn btn-default">
+            <Link to="" className="btn btn-default">
                         Medical Dashboard 
             </Link>
 
@@ -83,7 +83,7 @@ function UserTypeComponent() {
             />
          
             <form className="form-horizontal">
-            <Link to="/pharmahome" className="btn btn-default">
+            <Link to="" className="btn btn-default">
                         Pharma Dashboard 
             </Link>
 
