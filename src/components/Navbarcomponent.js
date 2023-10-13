@@ -46,7 +46,7 @@ function Navbarcomponent(props) {
       
         <div className="logo-holder logo-3 mr-3">
           <a>
-            <h3>Smart HealthChain</h3>
+            <h3>Medi-chain</h3>
             <p>A blockchain DApp</p>
           </a>
         </div>
