@@ -26,7 +26,7 @@ function UserTypeComponent() {
             />
             
             <form className="form-horizontal">
-                <Link to="" className="btn btn-default">
+                <Link to="/doctorhome" className="btn btn-default">
                 Doctor Dashboard 
                 </Link>
 
@@ -46,7 +46,7 @@ function UserTypeComponent() {
             />
            
                 <form className="form-horizontal">
-                <Link to="" className="btn btn-default">
+                <Link to="/patienthome" className="btn btn-default">
                         Patient Dashboard 
                 </Link>
                 </form> 
@@ -64,7 +64,7 @@ function UserTypeComponent() {
                 />
             
             <form className="form-horizontal">
-            <Link to="" className="btn btn-default">
+            <Link to="/medicalhome" className="btn btn-default">
                         Medical Dashboard 
             </Link>
 
@@ -83,7 +83,7 @@ function UserTypeComponent() {
             />
          
             <form className="form-horizontal">
-            <Link to="" className="btn btn-default">
+            <Link to="/pharmahome" className="btn btn-default">
                         Pharma Dashboard 
             </Link>
 
