@@ -4,7 +4,7 @@ import { ethers } from 'ethers';
 import { useState } from 'react';
 import Loader from './Loader';
 
-const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
+const PharmaContractAddress="0xC9D83763776c578C0d76bd0CbCd00f06036f612F";
 const abiPharmaContract=[
 	{
 		"inputs": [

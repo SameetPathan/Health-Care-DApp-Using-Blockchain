@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { PharmaAddress } from './ABI_ADDRESS';
 import Loader from './Loader';
 
-const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
+const DoctorContractAddress="0xCaEe5f85bE94B4858D756717a82F44985B1A61De";
 const abiDoctorContract=[
 	{
 		"inputs": [
@@ -226,7 +226,7 @@ const abiDoctorContract=[
 	}
 ];
 
-const MedicalContractAddress="0xde64DF73E3e4064585494D61F6FfCe39435d41d8";
+const MedicalContractAddress="0xf95a98b5f91DfafAB0C7da866DB6e1174695b4Fa";
 const abiMedicalContract=[
 	{
 		"inputs": [
@@ -402,234 +402,7 @@ const abiMedicalContract=[
 	}
 ];
 
-const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
-const abiPatientContract=[
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "patientid",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "FullName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Gender",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Address",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "DateOfBirth",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "PhoneNumber",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Diagnoses",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Medicines",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "Health_Survey_Lab_Test",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "AnyPastHistroy",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "Doctorid",
-				"type": "address"
-			}
-		],
-		"name": "addPatient",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getAllPatient",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "uint256",
-						"name": "patientid",
-						"type": "uint256"
-					},
-					{
-						"internalType": "string",
-						"name": "FullName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Gender",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Address",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "DateOfBirth",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "PhoneNumber",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Diagnoses",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Medicines",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "Health_Survey_Lab_Test",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "AnyPastHistroy",
-						"type": "string"
-					},
-					{
-						"internalType": "address",
-						"name": "Doctorid",
-						"type": "address"
-					}
-				],
-				"internalType": "struct PatientContract.PatientData[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getNumberOfRecords",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "patientid",
-				"type": "uint256"
-			}
-		],
-		"name": "getPatient",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
-
-const PharmaContractAddress="0xdE663Ba02E03D5886968eb07d659E81Ef52Fd282";
+const PharmaContractAddress="0xC9D83763776c578C0d76bd0CbCd00f06036f612F";
 const abiPharmaContract=[
 	{
 		"inputs": [
@@ -876,6 +649,7 @@ function AdminPanel() {
 
     const Update = async () => {
         try {
+			
             const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -1029,7 +803,7 @@ function AdminPanel() {
               <option>Select</option>
               <option value="doctor">Doctor</option>
               <option value="medical">Medical</option>
-              <option value="Medicine">Medicine</option>
+              <option value="medicine">Medicine</option>
             </select>
           </div>
 

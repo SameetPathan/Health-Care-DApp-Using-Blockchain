@@ -2,7 +2,7 @@ import React from 'react'
 import { ethers } from 'ethers';
 import Loader from './Loader';
 
-const DoctorContractAddress="0xA08169A7267f47422e9aFd5deD66B2774342e252";
+const DoctorContractAddress="0xCaEe5f85bE94B4858D756717a82F44985B1A61De";
 const abiDoctorContract=[
 	{
 		"inputs": [

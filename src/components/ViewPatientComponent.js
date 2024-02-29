@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { ethers } from 'ethers';
 import Loader from './Loader';
 
-const PatientContractAddress="0x89D128e174E05e2bEf51eFA05D2A2D2c787d83E0";
+const PatientContractAddress="0xD6c8633EB5863420e1b7433679DC91828d765Fa8";
 const abiPatientContract=[
 	{
 		"inputs": [
