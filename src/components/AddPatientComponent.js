@@ -280,6 +280,24 @@ function AddPatientComponent(props) {
 	
 	  */
 
+  const [phone, setPhone] = useState("");
+  const [error, seterror] = useState("");
+
+
+  const setPhonehandle = (event) => {
+    const inputValue = event.target.value;
+    const numericValue = inputValue.replace(/\D/g, '');
+    if (numericValue.length === 10) {
+	  seterror("")
+    } else {
+		if(numericValue.length !== 10){
+		setPhone(numericValue);
+		seterror("Please enter 10 number.")
+		}
+    }
+  };
+
+
   const [account, setAccount] = useState(null);
 
   const setacc=async()=>{
@@ -478,9 +496,10 @@ function AddPatientComponent(props) {
               type="number"
               className="form-control"
               id="phonenumber"
+			  value={phone} onChange={setPhonehandle}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
+            <div className="">{error}</div>
           </div>
         </div>
         <div className="form-row">

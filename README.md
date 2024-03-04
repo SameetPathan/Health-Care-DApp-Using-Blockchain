@@ -1,7 +1,7 @@
 
 ### Link
 
-https://smart-healthchain.netlify.app
+https://medi-block-chain.netlify.app/
 
 ## App access only through Metamask and test network set to georliETH
 

@@ -229,6 +229,24 @@ function AddDoctor(props) {
 
   const [account, setAccount] = useState(null);
 
+  const [error, seterror] = useState("");
+  const [phone, setPhone] = useState("");
+
+
+
+  const setPhonehandle = (event) => {
+    const inputValue = event.target.value;
+    const numericValue = inputValue.replace(/\D/g, '');
+    if (numericValue.length === 10) {
+	  seterror("")
+    } else {
+		if(numericValue.length !== 10){
+		setPhone(numericValue);
+		seterror("Please enter 10 number.")
+		}
+    }
+  };
+
   const setacc=async()=>{
 
     const { ethereum } = window;
@@ -381,9 +399,9 @@ function AddDoctor(props) {
          
             <div className="col-lg-2 col-md-6 mb-3">
             <label htmlFor="validationCustom02">Phone Number</label>
-            <input type="number" className="form-control" id="phonenumber"  required/>
+            <input type="number" className="form-control" value={phone} onChange={setPhonehandle} id="phonenumber"  required/>
             <div className="valid-feedback">
-                Looks good!
+			{error}
             </div>
             </div>
 
